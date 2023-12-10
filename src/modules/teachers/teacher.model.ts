@@ -10,6 +10,7 @@ import {
 import { Discipline } from '../disciplines/discipline.model';
 import { TeacherDisciplines } from './teacher-disciplines.model';
 import { Grade } from '../grades/grade.model';
+import { Lesson } from '../lessons/lesson.model';
 
 interface TeacherCreationAttributes {
   lastName: string;
@@ -131,4 +132,7 @@ export class Teacher extends Model<Teacher, TeacherCreationAttributes> {
 
   @BelongsToMany(() => Discipline, () => TeacherDisciplines)
   disciplines: Discipline[];
+
+  @HasOne(() => Lesson)
+  teachesLesson: Lesson;
 }

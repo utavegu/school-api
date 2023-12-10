@@ -10,6 +10,7 @@ import {
 } from 'sequelize-typescript';
 import { Teacher } from '../teachers/teacher.model';
 import { Student } from '../students/student.model';
+import { Lesson } from '../lessons/lesson.model';
 
 interface GradeCreationAttributes {
   name: string;
@@ -49,4 +50,11 @@ export class Grade extends Model<Grade, GradeCreationAttributes> {
 
   @HasMany(() => Student)
   students: Student[];
+
+  @ForeignKey(() => Lesson)
+  @Column({ type: DataType.INTEGER })
+  lessonId: number;
+
+  @BelongsTo(() => Lesson)
+  lesson: Lesson;
 }

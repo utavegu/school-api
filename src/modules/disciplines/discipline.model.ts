@@ -3,11 +3,13 @@ import {
   BelongsToMany,
   Column,
   DataType,
+  HasOne,
   Model,
   Table,
 } from 'sequelize-typescript';
 import { Teacher } from '../teachers/teacher.model';
 import { TeacherDisciplines } from '../teachers/teacher-disciplines.model';
+import { Lesson } from '../lessons/lesson.model';
 
 interface DisciplineCreationAttributes {
   name: string;
@@ -54,4 +56,7 @@ export class Discipline extends Model<
 
   @BelongsToMany(() => Teacher, () => TeacherDisciplines)
   teachers: Teacher[];
+
+  @HasOne(() => Lesson)
+  lesson: Lesson;
 }

@@ -12,6 +12,10 @@ import { TeachersModule } from '../teachers/teachers.module';
 import { Student } from '../students/student.model';
 import { StudentsModule } from '../students/students.module';
 import { TeacherDisciplines } from '../teachers/teacher-disciplines.model';
+import { Classroom } from '../classrooms/classroom.model';
+import { ClassroomsModule } from '../classrooms/classrooms.module';
+import { Lesson } from '../lessons/lesson.model';
+import { LessonsModule } from '../lessons/lesson.module';
 
 @Module({
   imports: [
@@ -25,13 +29,23 @@ import { TeacherDisciplines } from '../teachers/teacher-disciplines.model';
       username: 'postgres',
       password: 'postgres',
       database: 'schooldb',
-      models: [Discipline, Grade, Teacher, Student, TeacherDisciplines],
+      models: [
+        Discipline,
+        Grade,
+        Teacher,
+        Student,
+        TeacherDisciplines,
+        Classroom,
+        Lesson,
+      ],
       autoLoadModels: true,
     }),
     DisciplinesModule,
     GradesModule,
     TeachersModule,
     StudentsModule,
+    ClassroomsModule,
+    LessonsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
