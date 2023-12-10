@@ -1,5 +1,13 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { Column, DataType, Model, Table } from 'sequelize-typescript';
+import {
+  BelongsToMany,
+  Column,
+  DataType,
+  Model,
+  Table,
+} from 'sequelize-typescript';
+import { Teacher } from '../teachers/teacher.model';
+import { TeacherDisciplines } from '../teachers/teacher-disciplines.model';
 
 interface DisciplineCreationAttributes {
   name: string;
@@ -43,4 +51,7 @@ export class Discipline extends Model<
     type: DataType.STRING,
   })
   description: string;
+
+  @BelongsToMany(() => Teacher, () => TeacherDisciplines)
+  teachers: Teacher[];
 }
